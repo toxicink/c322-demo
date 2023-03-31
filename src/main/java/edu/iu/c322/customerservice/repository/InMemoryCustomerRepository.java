@@ -6,13 +6,14 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Repository
-public class CustomerRepository {
+
+public class InMemoryCustomerRepository{
     private List<Customer> customers = new ArrayList();
 
     public List<Customer> findAll(){
         return customers;
     }
+
     public int create(Customer customer){
         int id = customers.size() + 1;
         customer.setId(id);
@@ -20,7 +21,7 @@ public class CustomerRepository {
         return id;
     }
 
-    public void update(Customer customer , int id){
+    public void update(Customer customer, int id){
         Customer x = getCustomerById(id);
         if(x != null){
             x.setName(customer.getName());
